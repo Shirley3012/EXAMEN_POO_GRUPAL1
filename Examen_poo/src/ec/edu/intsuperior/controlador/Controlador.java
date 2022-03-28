@@ -9,6 +9,7 @@ import ec.edu.intsuperior.vista.Administrador;
 import ec.edu.intsuperior.vista.Docente;
 import ec.edu.intsuperior.vista.Estudiante;
 
+
 /**
  *
  * @author PC
@@ -18,6 +19,7 @@ public class Controlador {
     Administrador administrador = new Administrador(this);
     Docente docente=new Docente(this);
     Estudiante estudiante=new Estudiante(this);
+    
     
 public void showLoggin(){
     loggin.setVisible(true);
