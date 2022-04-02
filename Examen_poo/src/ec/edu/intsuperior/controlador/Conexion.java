@@ -7,6 +7,9 @@ package ec.edu.intsuperior.controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,20 +17,28 @@ import java.sql.DriverManager;
  */
 public class Conexion {
     private static Connection conexion;
+    private static String user = "root";
+    private static String password="GATALINDAESPADA";
+    static String url= "jdbc:mysql://localhost:3306/proyecto_poo";
     
-    public static Connection getConnection(String bddName,String user,String Password){
+    public static Connection getConnection(){
         try {
-            conexion=DriverManager.getConnection("jdbc:mysql://localhost:3306/"+bddName,user,Password);
-            System.out.println("Conexion exitosa");
+            conexion=DriverManager.getConnection(url,user,password);
+            JOptionPane.showMessageDialog(null,"Conexion exitosa");
+            Statement stm = conexion.createStatement();
+            ResultSet rs =stm.executeQuery("select*from estudiante");
+            while (rs.next()){
+                System.out.println("OK");
+            }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
         return conexion;
     }
-     public static void closeConexion (String bddName,String user,String Password){
+     public static void closeConexion (){
         try {
-            getConnection(bddName,user,Password).close();
-            System.out.println("Conexion cerrada exitosamente");
+            getConnection().close();
+            JOptionPane.showMessageDialog(null,"Conexion cerrada exitosa");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

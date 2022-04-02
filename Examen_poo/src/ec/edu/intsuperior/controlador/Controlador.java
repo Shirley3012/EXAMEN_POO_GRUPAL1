@@ -137,7 +137,7 @@ public void showLoggin(){
     loggin.setVisible(true);
 } 
 public void probarConexion(){
-    Conexion.getConnection("proyecto_POO","root","root");
+    Conexion.getConnection();
     
 }
 public void showAdministrador(){
